@@ -1,0 +1,24 @@
+{
+  "name": "generator-birdeye",
+  "version": "1.0.0",
+  "description": "",
+  "files": [
+    "generators"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "escodegen": "^1.8.1",
+    "eslint": "^4.4.1",
+    "esprima": "^4.0.0",
+    "glob": "^7.1.2",
+    "yeoman-generator": "^1.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
