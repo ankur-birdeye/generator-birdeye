@@ -34,9 +34,12 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        var path = this.selectedParent.replace("packages", ".") + this.options.componentName;
+        // var path = this.selectedParent.replace("packages", ".") + this.options.componentName;
+        var indexFilePath = this.destinationPath(this.selectedParent) + "index.js";
 
-        updateIndexFile(this, 'packages/index.js', path, this.options.componentName);
+        // updateIndexFile(this, 'packages/index.js', path, this.options.componentName);
+        updateIndexFile(this, indexFilePath, './' + this.options.componentName,
+            this.options.componentName);
 
         this.fs.copyTpl(
             this.templatePath('component.js'),

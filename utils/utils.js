@@ -9,13 +9,13 @@ function updateIndexFile(ctx, filePath, componentPath, componentName) {
     })
     var parsed = esprima.parseModule(content);
     var importStatement;
-    if (componentPath == './' + componentName) {
+    if (componentPath !== './' + componentName) {
         importStatement = `import ${componentName} from '${componentPath}'`
+        parsed.body.unshift(esprima.parseModule(importStatement))
+        parsed.body[parsed.body.length - 1].specifiers.push(esprima.parseModule(`export {${componentName}}`).body[0].specifiers[0]);
     } else {
-        importStatement = `import {${componentName}} from '${componentPath}'`
+        parsed.body.unshift(esprima.parseModule(`export * from '${componentPath}'`));
     }
-    parsed.body.unshift(esprima.parseModule(importStatement))
-    parsed.body[parsed.body.length - 1].specifiers.push(esprima.parseModule(`export {${componentName}}`).body[0].specifiers[0]);
     content = escodegen.generate(parsed);
     ctx.fs.write(ctx.destinationPath(filePath), content);
 }
