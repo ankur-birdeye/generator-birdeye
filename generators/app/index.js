@@ -1,6 +1,6 @@
 var Generator = require("yeoman-generator");
 var glob = require('glob');
-var { updateIndexFile } = require('../../utils/utils')
+var { updateIndexFile } = require('../utils/utils')
 
 module.exports = class extends Generator {
 
